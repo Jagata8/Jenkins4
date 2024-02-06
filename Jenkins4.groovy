@@ -1,15 +1,23 @@
 pipeline {
     agent any
-    
+    tools {
+        jdk 'jdk11'
+        maven 'maven'
+    }
+
     stages {
-        stage('Build') {
+        stage('Git Checkout') {
             steps {
-                // Checkout code from Git repository
                 git branch: 'main', url: 'https://github.com/Jagata8/Task4.git'
-                
-                // Build the Java project 
-                sh 'mvn clean compile'
             }
         }
-    }
-}
+        stage('Code Compile') {
+            steps {
+                bat label: 'Compile', script: 'mvn clean compile'
+            }
+        }
+        stage('Unit Tests') {
+            steps {
+                bat label: 'Run Tests', script: 'mvn test'
+            }
+        }
