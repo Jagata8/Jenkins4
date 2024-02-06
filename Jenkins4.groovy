@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 // Checkout code from Git repository
-                git 'https://github.com/Jagata8/Task4.git'
+                git branch: 'main', url: 'https://github.com/Jagata8/Task4.git'
                 
-                // Build the Java project (replace with your build commands)
+                // Build the Java project 
                 sh 'mvn clean install'
             }
         }
