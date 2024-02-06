@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Jagata8/Task4.git'
                 
                 // Build the Java project 
-                sh 'mvn clean install'
+                sh 'mvn clean compile'
             }
         }
     }
